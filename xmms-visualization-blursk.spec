@@ -1,4 +1,4 @@
-# $Revision: 1.4 $
+# $Revision: 1.5 $
 Summary:	Blursk - visualization plugin inspired by Blur Scope
 Summary(pl):	Blursk - wtyczka wizualizuj±ca zainspirowana Blur Scope
 Name:		xmms-visualization-blursk
@@ -25,11 +25,10 @@ and other options. The only things that haven't changed are portions
 of the XMMS interface and configuration code.
 
 %description -l pl
-Blursk to wtyczka wizualizuj±ca dla odtwarzacza XMMS. Jest
-zainspirowana wtyczk± "Blur Scope", ale Blursk posuwa siê dalej.
-Obs³uguje szeroki zakres map kolorów, wzorów plam, stylów rysowania i
-innych opcji. Jedyn± rzecz± która nie zosta³a zmieniona to fragmenty
-interfejsu XMMS i kod konfiguracyjny.
+Blursk to wtyczka wizualizuj±ca dla XMMS-a. Jest zainspirowana wtyczk±
+"Blur Scope", ale Blursk posuwa siê dalej. Obs³uguje szeroki zakres map
+kolorów, wzorów plam, stylów rysowania i innych opcji. Jedyn± rzecz±
+która nie zosta³a zmieniona to fragmenty interfejsu XMMS i kod konfiguracyjny.
 
 %prep
 %setup -q -n Blursk-%{version}
