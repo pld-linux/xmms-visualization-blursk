@@ -1,5 +1,4 @@
-# $Revision: 1.3 $
-# TODO: configure macro (if it uses ac) or/and optflags
+# $Revision: 1.4 $
 Summary:	Blursk - visualization plugin inspired by Blur Scope
 Summary(pl):	Blursk - wtyczka wizualizuj±ca zainspirowana Blur Scope
 Name:		xmms-visualization-blursk
@@ -10,6 +9,10 @@ Group:		X11/Applications/Multimedia
 Source0:	http://www.cs.pdx.edu/~kirkenda/blursk/Blursk-%{version}.tar.gz
 # Source0-md5:	d5f3b2785ba5148b23ffe335f4560b7e
 URL:		http://www.cs.pdx.edu/~kirkenda/blursk/
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	gtk+-devel >= 1.2.2
+BuildRequires:	libtool
 BuildRequires:	xmms-devel >= 1.2.3
 Requires:	xmms
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -31,9 +34,18 @@ interfejsu XMMS i kod konfiguracyjny.
 %prep
 %setup -q -n Blursk-%{version}
 
+%{__perl} -pi -e 's@X11R6/lib"@X11R6/%{_lib}"@' configure.in
+%{__perl} -pi -e 's@(AC_PROG_CC)@$1\nAM_PROG_AS@' configure.in
+rm -f acinclude.m4
+
 %build
-cp /usr/share/automake/config.sub .
-%configure 
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%{__automake}
+%configure \
+	XMMS_PATH=/usr/bin/xmms
 %{__make} 
 
 %install
@@ -42,6 +54,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	libdir=%{xmms_visualization_plugindir}
+
+rm -f $RPM_BUILD_ROOT%{xmms_visualization_plugindir}/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
