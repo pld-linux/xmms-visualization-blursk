@@ -1,4 +1,4 @@
-# $Revision: 1.2 $
+# $Revision: 1.3 $
 # TODO: configure macro (if it uses ac) or/and optflags
 Summary:	Blursk - visualization plugin inspired by Blur Scope
 Summary(pl):	Blursk - wtyczka wizualizuj±ca zainspirowana Blur Scope
@@ -32,8 +32,9 @@ interfejsu XMMS i kod konfiguracyjny.
 %setup -q -n Blursk-%{version}
 
 %build
-./configure
-%{__make}
+cp /usr/share/automake/config.sub .
+%configure 
+%{__make} 
 
 %install
 rm -rf $RPM_BUILD_ROOT
