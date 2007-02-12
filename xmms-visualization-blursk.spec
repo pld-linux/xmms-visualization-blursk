@@ -1,6 +1,6 @@
-# $Revision: 1.7 $
+# $Revision: 1.8 $
 Summary:	Blursk - visualization plugin inspired by Blur Scope
-Summary(pl.UTF-8):   Blursk - wtyczka wizualizująca zainspirowana Blur Scope
+Summary(pl.UTF-8):	Blursk - wtyczka wizualizująca zainspirowana Blur Scope
 Name:		xmms-visualization-blursk
 Version:	1.3
 Release:	0.1
