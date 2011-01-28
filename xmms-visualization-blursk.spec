@@ -1,4 +1,3 @@
-# $Revision: 1.8 $
 Summary:	Blursk - visualization plugin inspired by Blur Scope
 Summary(pl.UTF-8):	Blursk - wtyczka wizualizująca zainspirowana Blur Scope
 Name:		xmms-visualization-blursk
@@ -14,6 +13,8 @@ BuildRequires:	automake
 BuildRequires:	gtk+-devel >= 1.2.2
 BuildRequires:	libtool
 BuildRequires:	xmms-devel >= 1.2.3
+BuildRequires:	xorg-lib-libXv-devel
+BuildRequires:	xorg-proto-videoproto-devel
 Requires:	xmms
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -36,6 +37,7 @@ kod konfiguracyjny.
 
 %{__perl} -pi -e 's@X11R6/lib"@X11R6/%{_lib}"@' configure.in
 %{__perl} -pi -e 's@(AC_PROG_CC)@$1\nAM_PROG_AS@' configure.in
+%{__perl} -pi -e 's/\@PTHREAD_LIBS\@/-lpthread/' Makefile.am
 rm -f acinclude.m4
 
 %build
@@ -45,8 +47,8 @@ rm -f acinclude.m4
 %{__autoheader}
 %{__automake}
 %configure \
-	XMMS_PATH=/usr/bin/xmms
-%{__make} 
+	XMMS_PATH=%{_bindir}/xmms
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
